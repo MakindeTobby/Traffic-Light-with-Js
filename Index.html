@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #timer {
+            margin: auto;
+            width: 180px;
+            height: 100px;
+            border-radius: 10px;
+            background-color: #000;
+            margin-top: 20px;
+            color: white;
+            font-size: 65px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 180px;
+            height: 400px;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #round_red {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+            /* background-color: #3a0000; */
+        }
+
+        #round_amber {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* background-color: #272100; */
+        }
+
+        #round_green {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* background-color: #081d00; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="timer"><span id="stopWatch"></span></div>
+    <div class="container">
+        <div id="round_red"></div>
+        <div id="round_amber"></div>
+        <div id="round_green"></div>
+    </div>
+</body>
+<script>
+    let counter = 10;
+    let light = "red"
+    let stopWatch = document.getElementById("stopWatch")
+    let bulb = document.getElementById("round_red")
+    let bulbY = document.getElementById("round_amber")
+    let bulbG = document.getElementById("round_green")
+
+    setInterval(() => {
+        console.log(light);
+
+        if (counter == 0 && light == "red") {
+            bulbG.style.backgroundColor = "green"
+            bulb.style.backgroundColor = "black"
+            bulbY.style.backgroundColor = "black"
+            light = "green"
+        }
+        else if (counter > 0 && counter <= 5 && light == "red") {
+            bulbY.style.backgroundColor = "yellow"
+        }
+        else if (counter == 0 && light == "green") {
+            bulb.style.backgroundColor = "red"
+
+            bulbG.style.backgroundColor = "black"
+            light = "red"
+        }
+        if (counter < 0) {
+            counter = 10
+        }
+
+        stopWatch.innerText = counter;
+        counter--;
+    }, 1000);
+    // timer = null;
+    // counter = 15;
+    // timer = setInterval(() => {
+    //     counter--;
+    //     if (counter >= 8) {
+    //         document.getElementById("round_red").style.backgroundColor = "#dd0004";
+    //         // document.getElementById("round_amber").style.backgroundColor = "#272100";
+    //         // document.getElementById("round_amber").style.backgroundColor = "#081d00";
+    //     }
+    //     else if (counter >= 3) {
+    //         document.getElementById("round_amber").style.backgroundColor = "#f9f018";
+    //         document.getElementById("round_red").style.backgroundColor = "#3a0000";
+    //         // document.getElementById("round_amber").style.backgroundColor = "#081d00";
+    //     }
+    //     else if (counter == 0) {
+    //         // clearInterval(timer);
+    //         window.location.reload();
+    //         document.getElementById("round_green").style.backgroundColor = "#66ff00";
+    //         document.getElementById("round_amber").style.backgroundColor = "#272100";
+    //         document.getElementById("round_red").style.backgroundColor = "#3a0000"
+
+    //     }
+    //     // console.log(counter)
+    //     document.getElementById("stopWatch").innerHTML = counter
+    // }, 1000);
+</script>
+
+</html>
